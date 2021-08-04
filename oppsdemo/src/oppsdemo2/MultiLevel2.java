@@ -1,0 +1,96 @@
+package oppsdemo2;
+
+ class Staff
+ {
+	 private int empId;
+	 String name;
+	 protected float salary,hra;
+	public Staff(int empId, String name, float salary) {
+		this.empId = empId;
+		this.name = name;
+		this.salary = salary;
+	}
+	 
+	 void getHRA()
+	 {
+		 hra=salary*60/100;
+		 System.out.println("HRA :"+hra);
+	 }
+	 
+	 void display()
+	 {
+	 System.out.println("***** employee Details******");
+		 System.out.println(empId+" " +name+" "+salary);
+		 
+	 }
+	 
+ }
+ class Manager extends Staff
+ {
+	 protected float da;
+	 private float gross;
+	 public Manager(int empId, String name, float salary) {
+		super(empId, name, salary);
+		}
+
+	
+	 void getDA()
+	 {
+		 da=salary*80/100;
+		 System.out.println("DA is :"+da);
+	 }
+	 void getGross()
+		{
+			gross= salary+hra+da;
+			System.out.println("Gross salary of manager is:"+gross);
+		}
+	 
+ }
+ class Director extends Manager
+ {
+	 public Director(int empId, String name, float salary) {
+		super(empId, name, salary);
+		// TODO Auto-generated constructor stub
+	}
+
+	float ta,gross;
+	
+	void getTA()
+	{
+		ta=(salary*30)/100;
+		System.out.println();
+	}
+	void getGross()
+	{
+		gross= salary+hra+da+ta;
+		System.out.println("Gross salary of director is:"+gross);
+	}
+	 
+ }
+public class MultiLevel2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+         Director d1=new Director(101,"kenea",5000);
+         System.out.println("********************director***********");
+         d1.display();
+         d1.getHRA();
+         d1.getDA();
+         d1.getTA();
+         
+         Manager m1=new Manager(201,"Marry",4000);
+         System.out.println("******* Manager Details*******");
+         m1.display();
+         m1.getHRA();
+         m1.getDA();
+         m1.getGross();
+         
+         Staff s1=new Staff(301,"Hellen",2000);
+         System.out.println("************ Sataff details******");
+         s1.display();
+         s1.getHRA();
+         
+         }
+
+
+}
